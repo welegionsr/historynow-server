@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var passport = require('./auth');
+var passport = require('../auth');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
     console.log(req.body);
