@@ -36,7 +36,7 @@ passport.use(
 
       user = results[0];
 
-      //if user wasn't found
+      //if user wasn't found`
       if (!user) {
         return done("Wrong username or password!");
       }

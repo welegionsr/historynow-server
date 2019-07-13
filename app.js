@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventRouter = require('./routes/events');
 var wishlistRouter = require('./routes/wishlist');
+var loginRouter = this.require('./routes/login');
 
 var app = express();
 app.use(cors());
@@ -28,18 +29,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
-    console.log(req.body);
-    if(req.user) {
-        res.status(200).send(req.user);
-    } else {
-        res.status(403).send('login failed!');
-    }
-});
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventRouter);
 app.use('/wishlist', wishlistRouter);
+app.use('/login', loginRouter);
 
 module.exports = app;
