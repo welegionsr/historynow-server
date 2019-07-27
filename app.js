@@ -8,7 +8,7 @@ var passport = require('./auth');
 var mongoose = require('mongoose');
 
 const DB_URL = 'mongodb://localhost:27017/historynow';
-mongoose.connect(DB_URL, ({useNewUrlParser: true}));
+mongoose.connect(DB_URL, ({useNewUrlParser: true, useFindAndModify: false}));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
