@@ -56,7 +56,18 @@ router.post("/", async function(req, res) {
   //     req.body.eraId
   //   ]
   // );
-  const newEvent = new Event(...req.body);
+  // const newEvent = new Event(...req.body);
+  const newEvent = new Event({
+    typeOfEvent: req.body.typeOfEvent,
+    country: req.body.country,
+    price: req.body.price,
+    date: req.body.date,
+    dateInTime: req.body.dateInTime,
+    title: req.body.title,
+    description: req.body.description,
+    eraName: req.body.eraName,
+    imageUrl: req.body.imageUrl
+  });
   try {
     const doc = await newEvent.save();
     res.status(200).send({ status: "success", doc });
