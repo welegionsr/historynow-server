@@ -1,7 +1,7 @@
 db.users.insertMany([
     {
-        firstName: 'The',
-        lastName: 'Overlord',
+        firstName: 'Overlord',
+        lastName: 'Smith',
         email: 'bigboss@historynow.com',
         username: 'admin',
         userPassword: '1234',
