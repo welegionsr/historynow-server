@@ -102,8 +102,21 @@ router.put("/:id", async function(req, res) {
   //   [req.body.title, req.body.description, req.params.id]
   // );
   const { id } = req.params;
-  const newData = { ...req.body };
-  await Event.updateOne({ _id: id }, newData, (err, doc) => {
+  const newEvent = new Event({
+    typeOfEvent: req.body.typeOfEvent,
+    country: req.body.country,
+    price: req.body.price,
+    date: req.body.date,
+    dateInTime: req.body.dateInTime,
+    title: req.body.title,
+    description: req.body.description,
+    eraName: req.body.eraName,
+    imageUrl: req.body.imageUrl
+  });
+
+  newEvent._id = id;
+  
+  await Event.updateOne({ _id: id }, {$set: newEvent}, (err, doc) => {
     if (err)
       res
         .status(404)
